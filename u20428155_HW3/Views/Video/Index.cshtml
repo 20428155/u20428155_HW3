@@ -1,0 +1,35 @@
+﻿@model IEnumerable<u20428155_HW3.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    @foreach (var file in Model)
+    {
+
+
+    <div class="col-lg-3">
+        <div class="gallery">
+            <a href="~/Media/Videos/@file.FileName"
+             data-fancybox="video-gallery"
+               data-thumb="https://lipsum.app/id/28/200x150"
+               >
+                <video controls width="250" height="250">
+                    <source src="~/Media/Videos/@file.FileName" type="video/mp4">
+                </video>
+            </a>
+        </div>
+      
+            <p>@Html.DisplayFor(modelItem => file.FileName)</p>
+            <button class="btn btn-default">
+                @Html.ActionLink("Delete", "DeleteFile", new { fileName = file.FileName })
+            </button>
+            <button class="btn btn-default">
+                @Html.ActionLink("Download", "DownloadFile", new { fileName = file.FileName })
+            </button>
+    </div>
+
+
+    }
+</div>

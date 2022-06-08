@@ -1,0 +1,43 @@
+﻿@model IEnumerable<u20428155_HW3.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th>
+            Delete Option
+        </th>
+        <th>
+            Download Option
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FileName)
+    </td>
+    <td>
+        <button class="btn btn-default">
+            @Html.ActionLink("Delete", "DeleteFile", new { fileName = item.FileName })
+        </button>
+    </td>
+
+    <td>
+        <button class="btn btn-default" >
+            @Html.ActionLink("Download", "DownloadFile", new { fileName =item.FileName})
+        </button>
+       
+    </td>
+</tr>
+}
+
+</table>

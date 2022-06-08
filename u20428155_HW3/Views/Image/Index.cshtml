@@ -1,0 +1,31 @@
+﻿@model IEnumerable<u20428155_HW3.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    @foreach (var file in Model)
+    {
+
+
+    <div class="col-lg-3">
+        <div class="gallery">
+            <a href="~/Media/Images/@file.FileName"
+               data-fancybox="image-gallery">
+                <img src="~/Media/Images/@file.FileName" style="height: 250px; width: 250px" />
+            </a>
+
+
+        </div>
+
+        <p>@Html.DisplayFor(modelItem => file.FileName)</p>
+        <button class="btn btn-default">
+            @Html.ActionLink("Delete", "DeleteFile", new { fileName = file.FileName })
+        </button>
+        <button class="btn btn-default">
+            @Html.ActionLink("Download", "DownloadFile", new { fileName = file.FileName })
+        </button>
+    </div>
+        }
+    </div>

@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Description</h2>
+            <p>
+                Welcome to MYG Staff Page. Please Upload the picture of each wig and a video of it followed by a document of the wigs details. 
+                Thank you !
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            @ViewBag.Msg
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <form action="/action_page.php">
+                    <div class="radio">
+                        <label><input type="radio" name="radioButton" value="Document"> Document</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="radioButton" value="Image"> Image</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="radioButton" value="Video"> Video</label>
+                    </div>
+                    <br />
+                    <input type="file" name="file" />
+                    <br />
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            }
+
+
+        </div>
+    </div>
+</div>
